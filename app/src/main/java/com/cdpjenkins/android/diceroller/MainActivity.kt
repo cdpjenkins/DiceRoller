@@ -9,10 +9,15 @@ import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var resultText: TextView
+    private lateinit var diceImage: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        resultText = findViewById(R.id.result_text)
+        diceImage = findViewById(R.id.dice_image)
 
         val rollButton: Button = findViewById(R.id.roll_button)
         rollButton.setOnClickListener {
@@ -27,8 +32,8 @@ class MainActivity : AppCompatActivity() {
         setDiceImage(randomNumber)
     }
 
+
     private fun setResultText(randomNumber: Int) {
-        val resultText: TextView = findViewById(R.id.result_text)
         resultText.text = "$randomNumber"
     }
 
@@ -42,7 +47,7 @@ class MainActivity : AppCompatActivity() {
             6 -> R.drawable.dice_6
             else -> R.drawable.dice_6
         }
-        val diceImage: ImageView = findViewById(R.id.dice_image)
+
         diceImage.setImageResource(drawableResource)
         diceImage.contentDescription = randomNumber.toString()
     }
