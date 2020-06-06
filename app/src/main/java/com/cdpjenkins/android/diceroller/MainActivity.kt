@@ -1,9 +1,10 @@
 package com.cdpjenkins.android.diceroller
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.Toast
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,9 +13,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val rollButton = findViewById<Button>(R.id.roll_button)
+        val rollButton: Button = findViewById(R.id.roll_button)
         rollButton.setOnClickListener {
-            Toast.makeText(this, "Button clicked", Toast.LENGTH_SHORT).show()
+            rollDice()
         }
+    }
+
+    private fun rollDice() {
+        val resultText: TextView = findViewById(R.id.result_text)
+
+        val value = Random.nextInt(6) + 1
+        resultText.text = "$value"
     }
 }
